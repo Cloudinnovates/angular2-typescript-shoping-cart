@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {Product} from './product';
 import {ProductDetailComponent} from './hero-detail.component';
+import {CartCounterComponent} from './cart-counter.component';
 import {ProductService} from './product.service';
 import {OnInit} from 'angular2/core';
 
@@ -12,13 +13,14 @@ import {OnInit} from 'angular2/core';
     selector: 'my-app',
     styleUrls: ["app/app.css"],
     templateUrl: "app/app.html",
-    directives: [ProductDetailComponent],
+    directives: [CartCounterComponent, ProductDetailComponent],
     providers: [ProductService]
 })
 export class AppComponent implements OnInit {
-    public title = 'PhoneMart';
+    public title = 'Shop Example';
     public selectedProduct: Product;
     public products: Product[];
+    public numberOfProducts = 4;
 
     /**
     * Dependecy injection of the service. Why not using anotations instead?
@@ -32,6 +34,10 @@ export class AppComponent implements OnInit {
       console.log(product);
       this.selectedProduct = product;
 
+    }
+    appendItem(product: Product) {
+      console.log("appednig item")
+      this.numberOfProducts++;
     }
     /**
     * Retrives the list of heros with an Promise. This is not really neaded. But its

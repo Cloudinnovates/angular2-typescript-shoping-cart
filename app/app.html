@@ -1,19 +1,69 @@
-
 <header>
-  <h1>{{title}}</h1>
+  <nav class="center">
+    <div class="">
+      <div class="left-column">
+        <p class="brand">{{title}}</p>
+      </div>
+      <div class="right-column">
+        <my-product-stuff [numberOfProducts]="numberOfProducts" ></my-product-stuff>
+
+      </div>
+      <br style="clear:both">
+    </div>
+  </nav>
+
+
 </header>
 
-  <article class="page"> <!-- the main content , everything here will be pushed down to escape the header -->
+  <article class="center page"> <!-- the main content , everything here will be pushed down to escape the header -->
     <section class="main"> <!-- wrapper for the main class -->
 
-      <h2>Inventory</h2>
-      <ul class="inventory">
-        <li *ngFor="#product of products"
-          [class.selected]="product === selectedProduct"
-          (click)="onSelect(product)" >
-          <span class="badge">{{product.id}}</span> {{product.description}}
-        </li>
-      </ul>
+      <h1>Phones</h1>
+
+      <div class="product-list">
+
+                  <div class="product-item" *ngFor="#product of products"
+                    [class.selected]="product === selectedProduct"
+                    (click)="onSelect(product)" >
+
+                      <div class="left-column">
+
+                            <h3>{{product.description}}</h3>
+
+                            <div class="stockstatus">
+
+                                <span class="stockstatus-availability-label">Availability:</span>
+
+                                <i class="icon icon-sm fa-colored-check-square-green" title="Tillgänglighet: 100+ st i lager (1-2 vardagar leveranstid)"></i>
+
+                                <span class="stockstatus-stock-details">{{product.stockQuantity}} in stock (1-2 days shipping)</span>
+
+                            </div>
+
+
+                        </div> <!-- end of left column -->
+                        <div class="right-column">
+
+                              <div class="price-wrapper">
+
+                                      <div class="product-price">
+
+                                          <p class="product-price-now">{{product.price}}:-</p>
+
+                                      </div>
+
+                              </div>
+                              <div class="buy-button">
+
+                                  <button (click)="appendItem(product)">Add to cart</button>
+
+                              </div>
+                        </div> <!-- end of right column -->
+                        <br style="clear:both">
+                  </div>
+      </div>
+
+
 
       <my-product-detail [product]="selectedProduct"></my-product-detail>
 

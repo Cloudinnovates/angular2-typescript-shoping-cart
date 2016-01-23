@@ -1,0 +1,30 @@
+
+<header>
+  <h1>{{title}}</h1>
+</header>
+
+  <article class="page"> <!-- the main content , everything here will be pushed down to escape the header -->
+    <section class="main"> <!-- wrapper for the main class -->
+
+      <h2>Inventory</h2>
+      <ul class="inventory">
+        <li *ngFor="#product of products"
+          [class.selected]="product === selectedProduct"
+          (click)="onSelect(product)" >
+          <span class="badge">{{product.id}}</span> {{product.description}}
+        </li>
+      </ul>
+
+      <my-product-detail [product]="selectedProduct"></my-product-detail>
+
+    </section>
+    <aside>
+
+
+    </aside>
+</article>
+
+<footer>
+
+
+</footer>

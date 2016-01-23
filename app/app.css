@@ -1,16 +1,4 @@
 
-.selected {
-  background-color: #FBFBFB !important;
-  color: #48647D;
-
-}
-.page {
-
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-top:80px !important;
-
-}
-
 .brand {
 
     font-size: 19px;
@@ -18,84 +6,10 @@
     font-weight: 300;
 }
 
-input[type="text"] {
+.page {
 
-    margin: 0;
-    font-family: sans-serif;
-    font-size: 14px;
-    appearance: none;
-    box-shadow: none;
-    padding: 5px;
-    border: solid 1px #dcdcdc;
-    transition: box-shadow 0.3s, border 0.3s;
-    border-radius: 2px;
-
-}
-input[type="text"]:focus {
-    border: solid 1px #707070;
-    box-shadow: 0 0 5px 1px #969696;
-}
-
-.center {
-
-  margin: auto;
-  width: 80%;
-
-}
-.left-column {
-  float:left;
-}
-
-.right-column {
-  float:right;
-}
-
-.product-item {
-  padding:8px;
-  border:0px solid #e6e6e6;
-  border-top-width: 1px;
-}
-.product-item:hover {
-  cursor: pointer;
-  background-color: #FBFBFB;
-
-}
-.product-item:hover h3 {
-
-  color: #48647D;
-
-}
-
-
-
-nav h1 {
-  font-size: 1.4em;
-  margin:13px 0px 5px 0px;
-}
-
-.product-price {
-
-  font-size: 20px;
-  font-weight: bold;
-}
-
-h1 {
-    font-size: 2em;
-    color: #484747;
-    font-weight: 300;
-    line-height: 1.2;
-}
-
-button {
-    border:none;
-    color: #fff;
-    background-color: #008cba;
-    border-color: #0079a1;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 0;
-    padding: 8px 16px;
-    cursor: pointer;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top:80px !important;
 
 }
 

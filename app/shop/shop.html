@@ -1,0 +1,41 @@
+<h1>Phones</h1>
+
+     <div class="product-list">
+
+                 <div class="product-item" *ngFor="#product of products"
+                   [class.selected]="product === selectedProduct"
+                   (click)="onSelect(product)" >
+
+                     <div class="left-column">
+
+                           <h3>{{product.description}}</h3>
+
+                           <div class="stockstatus">
+
+                               <span class="stockstatus-availability-label">Availability:</span>
+
+                               <i class="icon icon-sm fa-colored-check-square-green" title="Tillgänglighet: 100+ st i lager (1-2 vardagar leveranstid)"></i>
+
+                               <span class="stockstatus-stock-details">{{product.stockQuantity}} in stock (1-2 days shipping)</span>
+
+                           </div>
+
+
+                       </div> <!-- end of left column -->
+                       <div class="right-column">
+                         <div class="product-price">
+
+                            <p class="product-price-now">{{product.price}}:-</p>
+
+                        </div>
+
+
+                        <div class="buy-button">
+
+                            <button (click)="appendItem(product)">Add to cart</button>
+
+                        </div>
+                    </div> <!-- end of right column -->
+                    <br style="clear:both">
+                </div>
+    </div>

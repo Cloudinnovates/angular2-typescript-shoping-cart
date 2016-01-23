@@ -3,62 +3,33 @@ import {Product} from './product';
 import {ProductDetailComponent} from './hero-detail.component';
 import {CartCounterComponent} from './cart-counter.component';
 import {ProductService} from './product.service';
-import {OnInit} from 'angular2/core';
-
-
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {ShopComponent} from './shop/shop.component';
 /**
-* Lists all items in the inventory
+*
+*  Router for the application
+*
 */
 @Component({
     selector: 'my-app',
-    styleUrls: ["app/app.css"],
+    styleUrls: ["app/app.css","app/commonStyle/commonStyle.css"],
     templateUrl: "app/app.html",
-    directives: [CartCounterComponent, ProductDetailComponent],
+    directives: [ROUTER_DIRECTIVES],
     providers: [ProductService]
 })
-export class AppComponent implements OnInit {
-    public title = 'Shop Example';
-    public selectedProduct: Product;
-    public products: Product[];
-    public numberOfProducts = 4;
+@RouteConfig([
+  {path: '/shop',   name: 'Shop',     component: ShopComponent},
+  {path: '/cart', name: 'Cart', component: CartCounterComponent}
+])
+export class AppComponent  {
+
+    public title = "Mobilifånia";
 
     /**
     * Dependecy injection of the service. Why not using anotations instead?
     */
     constructor(private _productService: ProductService) {
 
-    }
-
-    onSelect(product: Product) {
-
-      console.log(product);
-      this.selectedProduct = product;
-
-    }
-    appendItem(product: Product) {
-      console.log("appednig item")
-      this.numberOfProducts++;
-    }
-    /**
-    * Retrives the list of heros with an Promise. This is not really neaded. But its
-    * good practice to not let the Component know how we fetch the information.
-    *
-    * The data might be fetched from an API, or local storage ( current impl )
-    *
-    */
-    getProducts() {
-
-      this._productService.getProducts().then(products => this.products = products);
-
-    }
-
-    /**
-    * Avoiding fetching data in the constructor makes our code more testable. The solution is to use
-    * the onInit provided by angular.
-    **/
-    ngOnInit() {
-
-      this.getProducts();
 
     }
 

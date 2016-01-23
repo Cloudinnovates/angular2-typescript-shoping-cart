@@ -1,0 +1,32 @@
+
+.selected {
+
+  background-color: #FBFBFB !important;
+  color: #48647D;
+
+}
+
+.product-item {
+  padding:8px;
+  border:0px solid #e6e6e6;
+  border-top-width: 1px;
+}
+
+.product-item:hover {
+  cursor: pointer;
+  background-color: #FBFBFB;
+
+}
+.product-item:hover h3 {
+
+  color: #48647D;
+
+}
+
+.product-price {
+
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  
+}

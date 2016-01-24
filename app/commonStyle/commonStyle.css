@@ -12,8 +12,10 @@ h1 {
     font-weight: 300;
     line-height: 1.2;
     font-size: 1.4em;
-    margin:13px 0px 5px 0px;
+    margin:0px
+
 }
+
 
 
 button {
@@ -30,7 +32,7 @@ button {
 
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"]  {
 
     margin: 0;
     font-family: sans-serif;
@@ -61,4 +63,12 @@ input[type="text"]:focus {
 
 .right-column {
   float:right;
+}
+
+.info-text {
+
+
+  text-align: center;
+  margin-top:25px;
+
 }

@@ -1,10 +1,11 @@
 import {Component} from 'angular2/core';
 import {Product} from './product';
-import {ProductDetailComponent} from './hero-detail.component';
-import {CartCounterComponent} from './cart-counter.component';
+import {CartComponent} from './cart/cart.component';
 import {ProductService} from './product.service';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {ShopComponent} from './shop/shop.component';
+import {CartService} from './cart.service';
+
 /**
 *
 *  Router for the application
@@ -15,20 +16,19 @@ import {ShopComponent} from './shop/shop.component';
     styleUrls: ["app/app.css","app/commonStyle/commonStyle.css"],
     templateUrl: "app/app.html",
     directives: [ROUTER_DIRECTIVES],
-    providers: [ProductService]
+    providers: [ProductService,CartService]
 })
 @RouteConfig([
-  {path: '/shop',   name: 'Shop',     component: ShopComponent},
-  {path: '/cart', name: 'Cart', component: CartCounterComponent}
+  {path: '/shop',   name: 'Shop',     component: ShopComponent, useAsDefault: true},
+  {path: '/cart', name: 'Cart', component: CartComponent}
 ])
 export class AppComponent  {
 
     public title = "Mobilifånia";
 
-    /**
-    * Dependecy injection of the service. Why not using anotations instead?
-    */
-    constructor(private _productService: ProductService) {
+  
+    constructor(private _productService: ProductService,private _cartService : CartService) {
+
 
 
     }

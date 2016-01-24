@@ -1,6 +1,7 @@
 import {PRODUCTS} from './mock-inventory';
 import {Product} from './product';
 import {Injectable} from 'angular2/core';
+import {CartEntity} from './cart.entity';
 /**
 * The cart service provides an way to store the cart in local store.
 **/
@@ -10,19 +11,45 @@ export class CartService {
   private _storage = localStorage;
 
   constructor() {
-    var emptyMap : { [key:string]:number; } = {};
-    this.clearTheCart();
-    this.setCart(emptyMap);
-    console.log("added empty mapp to local storage");
+      this.initCart();
   }
 
+  initCart () {
+
+      if(!this._storage.getItem('cart')) {
+
+          var emptyMap : { [key:string]:number; } = {};
+          this.setCart(emptyMap);
+
+          console.log("added empty mapp to local storage");
+      }
+
+  }
+
+  saveListOfCartEntities(listOfCartEntries : CartEntity[]) {
+      // reduce all the entities to a map
+      var cartMap = listOfCartEntries.reduce(function(map, cartEntry, i) {
+          map[cartEntry.product.id] = cartEntry;
+          return map;
+      }, {});
+      console.log(cartMap);
+      this.setCart(cartMap);
+
+  }
   /**
   * Returns all the products in the cart form the local storage
   *
   **/
-  getAllProductsInCart() {
+  getAllCartEntities() {
 
-    return Promise.resolve(PRODUCTS);
+    var myCartMap = this.getCart();
+    var cartEntities : CartEntity[] = [];
+    for (var key in myCartMap) {
+      var value = myCartMap[key];
+      cartEntities.push(value);
+    }
+    console.log(cartEntities);
+    return Promise.resolve(cartEntities);
 
   }
 
@@ -35,15 +62,19 @@ export class CartService {
 
         // if the current key exists in the map , append value
         if(cartMap[product.id] != undefined) {
-          console.log("not first time")
+
+            // if we are exeding the max number , we need to throw an exception
+            // TODO:s
             // increase the quantity of the specific product
-            var value = cartMap[product.id];
-            value++;
-            cartMap[product.id] = value;
+            var cartInstance = cartMap[product.id];
+            cartInstance.quantity++;
+            cartMap[product.id] = cartInstance;
         } else {
-          console.log("first time");
           // if not, set default value
-          cartMap[product.id] = 1;
+          cartMap[product.id] = {
+            'product':product,
+            'quantity':1
+          }
         }
         console.log(cartMap);
       // save the map
@@ -62,6 +93,8 @@ export class CartService {
 
   }
   clearTheCart() {
+
       this._storage.clear();
+
   }
 }

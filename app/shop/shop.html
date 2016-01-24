@@ -1,41 +1,62 @@
-<h1>Phones</h1>
 
+
+<div class="header-for-inventory">
+
+    <div class="left-column">
+
+        <h1>Phones</h1>
+
+    </div>
+
+  <div class="right-column">
+
+        <input #f type="text" placeholder="Type here to filter" (keyup)="filter(f.value)">
+
+  </div>
+
+  <br style="clear:both">
+
+</div>
      <div class="product-list">
 
-                 <div class="product-item" *ngFor="#product of products"
-                   [class.selected]="product === selectedProduct"
-                   (click)="onSelect(product)" >
 
-                     <div class="left-column">
+            <p class="info-text" *ngIf="visibleProducts && visibleProducts.length == 0">No items found with current filtering!</p>
 
-                           <h3>{{product.description}}</h3>
+           <div class="product-item" *ngFor="#product of visibleProducts"
+             [class.selected]="product === selectedProduct"
+             (click)="onSelect(product)" >
 
-                           <div class="stockstatus">
+               <div class="left-column">
 
-                               <span class="stockstatus-availability-label">Availability:</span>
+                     <h3>{{product.description}}</h3>
 
-                               <i class="icon icon-sm fa-colored-check-square-green" title="Tillgänglighet: 100+ st i lager (1-2 vardagar leveranstid)"></i>
+                     <div class="stockstatus">
 
-                               <span class="stockstatus-stock-details">{{product.stockQuantity}} in stock (1-2 days shipping)</span>
+                         <span class="stockstatus-availability-label">Availability:</span>
 
-                           </div>
+                         <i class="icon icon-sm fa-colored-check-square-green" title="Tillgänglighet: 100+ st i lager (1-2 vardagar leveranstid)"></i>
 
+                         <span class="stockstatus-stock-details">{{product.stockQuantity}} in stock (1-2 days shipping)</span>
 
-                       </div> <!-- end of left column -->
-                       <div class="right-column">
-                         <div class="product-price">
-
-                            <p class="product-price-now">{{product.price}}:-</p>
-
-                        </div>
+                     </div>
 
 
-                        <div class="buy-button">
+                 </div> <!-- end of left column -->
+                 <div class="right-column">
 
-                            <button (click)="appendItem(product)">Add to cart</button>
+                   <div class="product-price">
 
-                        </div>
-                    </div> <!-- end of right column -->
-                    <br style="clear:both">
-                </div>
+                      <p class="product-price-now">{{product.price}}:-</p>
+
+                  </div>
+
+
+                  <div class="buy-button">
+
+                      <button (click)="appendItem(product)">Add to cart</button>
+
+                  </div>
+              </div> <!-- end of right column -->
+              <br style="clear:both">
+          </div>
     </div>

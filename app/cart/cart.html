@@ -1,0 +1,59 @@
+<h1> Your Cart </h1>
+<section class="cartWrapper">
+
+        <p class="info-text" *ngIf="cartEntities && cartEntities.length == 0">... is empty</p>
+
+        <div class="row" *ngFor="#cartEntity of cartEntities">
+
+            <div class="col1">
+                <p>{{cartEntity.product.description}}</p>
+            </div>
+
+            <div class="col2">
+
+              <div class="quantity-selector">
+                  <button class="quantityButton" (click)=changeQuantity(cartEntity.product.id,-1)> - </button>
+                      <span  class="quantity"  name="quantity"> {{cartEntity.quantity}} </span>
+                  <button class="quantityButton" (click)=changeQuantity(cartEntity.product.id,1)> + </button>
+              </div>
+
+            </div>
+
+            <div class="col3">
+                <p>{{cartEntity.product.price | sum: cartEntity.quantity}}:-</p>
+            </div>
+
+            <div class="last">
+                <p class="removeRow-icon" (click)=removeByProductId(cartEntity.product.id)>x</p>
+            </div>
+
+        </div>
+
+
+    <div class="legend">
+
+        <div class="left-column">
+            <h4 class="posetive-green">Free transportation</h4>
+        </div>
+
+        <div class="right-column">
+            <h4>Total {{ totalSum }}:- </h4>
+        </div>
+        <br style="clear:both">
+    </div>
+
+
+    <div class="next-action">
+
+      <div class="left-column">
+           <a [routerLink]="['Shop']" ><button>Continue shoping</button></a>
+      </div>
+
+      <div class="right-column">
+          <button>Checkout</button>
+      </div>
+      <br style="clear:both">
+
+    </div>
+
+</section>

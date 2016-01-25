@@ -3,6 +3,11 @@ import {Injectable} from 'angular2/core';
 
 @Injectable()
 export class ProductService {
+
+  constructor() {
+    
+  }
+
   /**
   * Lists all the products
   **/

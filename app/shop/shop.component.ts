@@ -65,8 +65,9 @@ export class ShopComponent implements OnInit {
 
         // get the cart entry for the product
         this._cartService.getCartEntryByProductId(product.id).then(function(cartEntry:CartEntity) {
+
           // if product quantity hasnt been exeeded
-          if(cartEntry == undefined ||  (cartEntry.quantity + 1 <=  cartEntry.product.stockQuantity)) {
+          if(this.checkIfCapacityIsExeeded(cartEntry)) {
 
               this._cartService.addProductToCart(product);
 
@@ -78,13 +79,16 @@ export class ShopComponent implements OnInit {
 
           }
 
-
         }.bind(this));
 
+    }
 
+    checkIfCapacityIsExeeded(cartEntry:CartEntity):boolean {
 
+          return cartEntry == undefined ||  (cartEntry.quantity + 1 <=  cartEntry.product.stockQuantity)
 
     }
+
 
     /**
     * Retrives the list of products with an Promise. This is not really neaded. But its
@@ -115,5 +119,7 @@ export class ShopComponent implements OnInit {
       this.getProducts();
 
     }
+
+
 
 }

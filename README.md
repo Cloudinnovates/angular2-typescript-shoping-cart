@@ -17,7 +17,7 @@ Settings > Packages > tree-view > check Hide Ignored VCS names
 
 For running the test cases, we currently write two commands in the root. ( one for compiling the code, one for running the tests in the browser ) ```npm run tsc ``` and ```npm test```
 
-The testcases are inside the source folder as the angular dev team wants it. They are called the same as the source file, but with .spec appended to the end. 
+The testcases are inside the source folder as the angular dev team wants it. They are called the same as the source file, but with .spec appended to the end.
 
 
 ## Why Angular 2 and why TypeScript?
@@ -42,3 +42,18 @@ I had the possibility to use new features out of ES6. For example the code that 
 this.visibleProducts = this.products.filter(product => product.description.toLowerCase().includes(this.filterVal.toLowerCase()));
 
 ```
+
+
+## LICENSE
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+<http://www.apache.org/licenses/LICENSE-2.0>
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

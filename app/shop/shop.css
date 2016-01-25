@@ -3,11 +3,8 @@
 
   background-color: #FBFBFB !important;
   color: #48647D;
+}
 
-}
-.product-list {
-  margin-top:12px;
-}
 .product-item {
   padding:8px;
   border:0px solid #e6e6e6;
@@ -19,20 +16,37 @@
   background-color: #FBFBFB;
 
 }
+
 .product-item:hover h3 {
 
   color: #48647D;
 
 }
+.product-price-now {
+  text-align: right;
+}
+.add-to-cart-button {
+  float:right;
+}
+.product-item  h3 {
+    margin-top:5px;
+}
 
-.product-price {
+@media(max-width:767px){
 
-  font-size: larger;
-  font-weight: bold;
-  text-align: center;
+
+  .product-list-header h2 {
+      text-align: center;
+      margin:10px;
+  }
+
 
 }
 
-.product-price-now {
-  margin-top:10px;
+
+.product-list-header h2 {
+    margin:0px;
+}
+.product-list-header {
+    margin-bottom: 14px;
 }

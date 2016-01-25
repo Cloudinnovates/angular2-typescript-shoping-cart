@@ -5,7 +5,7 @@ import {Product} from './product';
 **/
 export interface CartEntity {
 
-  quantity: number; // the quantity
-  product: Product;
+  quantity: number; // the number of instances the user wants to buy
+  product: Product; // the product related to this cart entry
 
 }

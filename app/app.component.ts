@@ -10,27 +10,19 @@ import {CartService} from './cart.service';
 *
 *  Router for the application
 *
+*  This is the root component. It's purpose is to render header and some repetable html .
+*
+*  It will take care of the rooting definition as well.
 */
 @Component({
     selector: 'my-app',
     styleUrls: ["app/app.css","app/commonStyle/commonStyle.css"],
     templateUrl: "app/app.html",
     directives: [ROUTER_DIRECTIVES],
-    providers: [ProductService,CartService]
+    providers: []
 })
 @RouteConfig([
   {path: '/shop',   name: 'Shop',     component: ShopComponent, useAsDefault: true},
   {path: '/cart', name: 'Cart', component: CartComponent}
 ])
-export class AppComponent  {
-
-    public title = "Mobilifånia";
-
-  
-    constructor(private _productService: ProductService,private _cartService : CartService) {
-
-
-
-    }
-
-}
+export class AppComponent  { } // empty . magic is handled by the anotations.

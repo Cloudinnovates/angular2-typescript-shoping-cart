@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {Product} from './../product';
+import {CartEntity} from '../cart.entity';
 import {ProductService} from './../product.service';
 import {CartService} from './../cart.service';
 import {OnInit,Output,EventEmitter} from 'angular2/core';
@@ -9,7 +10,9 @@ import {AppComponent} from './../app.component';
 
 /**
 
-* Router
+* This component is responsible for the shop page. it displays the list of products and handles the filtering.
+* All communication to local storage is made through the CartService
+*
 */
 @Component({
     inputs: ['title'],
@@ -26,6 +29,7 @@ export class ShopComponent implements OnInit {
     public products: Product[];
     public visibleProducts : Product[];
     public product: Product;
+    public filterVal = "";
 
     /**
     * Dependecy injection of the service with reflection by angular2
@@ -38,20 +42,46 @@ export class ShopComponent implements OnInit {
 
     }
 
-    filter(filterVal:string) {
-      
-        this.visibleProducts = this.products.filter(product => product.description.toLowerCase().includes(filterVal.toLowerCase()));
+    filter() {
+        // filter out non maching products with js array.filter + string.includes
+        this.visibleProducts = this.products.filter(product => product.description.toLowerCase().includes(this.filterVal.toLowerCase()));
 
     }
+
+    /**
+    * Selects a product. The product will be greyed due to the css applied to it.
+    *
+    **/
     onSelect(product: Product) {
 
         this.selectedProduct = product; // we will use this information to gray the selected node
     }
+
+    /**
+    * Append a product to the cart through the cartService ( that we got injected )
+    * then navigate to the cart
+    **/
     appendItem(product: Product) {
 
-        this._cartService.addProductToCart(product);
+        this._cartService.getCartEntryByProductId(product.id).then(function(cartEntry:CartEntity) {
 
-        this._router.navigate( ['Cart'] );
+          if(cartEntry == undefined ||  (cartEntry.quantity + 1 <=  cartEntry.product.stockQuantity)) {
+
+              this._cartService.addProductToCart(product);
+
+              this._router.navigate( ['Cart'] );
+
+          } else {
+
+              alert("Out of stock for the given product. You currently have " + cartEntry.quantity + " of given product in your cart, while we in stock have " + cartEntry.product.stockQuantity );
+
+          }
+
+
+        }.bind(this));
+
+
+
 
     }
 
@@ -68,9 +98,9 @@ export class ShopComponent implements OnInit {
 
           this.products = result;
           this.visibleProducts = result;
-
+          
         }.bind(this), function(err) {
-            alert("something went wrong while fetching the products");
+            alert("something went wrong while fetching the products"); // some error message to the user would be good
         });
 
     }

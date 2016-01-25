@@ -1,59 +1,75 @@
-<h1> Your Cart </h1>
-<section class="cartWrapper">
+    <div class="row">
 
-        <p class="info-text" *ngIf="cartEntities && cartEntities.length == 0">... is empty</p>
+        <div class="col-sm-12 col-md-10 col-md-offset-1" >
+          <h2> Cart </h2>
 
-        <div class="row" *ngFor="#cartEntity of cartEntities">
+            <p class="bg-info" *ngIf="cartEntities && cartEntities.length == 0">... is empty</p>
 
-            <div class="col1">
-                <p>{{cartEntity.product.description}}</p>
-            </div>
+            <div class="table-responsive">
+            <table class="table table-hover" *ngIf="cartEntities &&  cartEntities.length > 0">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="hidden-xs">Quantity</th>
+                        <th class="text-center hidden-xs">Price</th>
+                        <th class="text-center">Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            <div class="col2">
+                    <tr *ngFor="#cartEntity of cartEntities">
+                        <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading"><p href="#">{{cartEntity.product.description}}</p></h4>
+                                <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                            </div>
+                        </div></td>
+                        <td class="col-sm-1 col-md-1 hidden-xs" style="text-align: center">
+                          <span  (click)=changeQuantity(cartEntity.product.id,-1) class="glyphicon glyphicon-minus pointer"></span> {{cartEntity.quantity}} <span (click)=changeQuantity(cartEntity.product.id,1)  class="glyphicon glyphicon-plus pointer"></span>
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center hidden-xs"><strong>{{cartEntity.product.price}}</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center "><strong>{{cartEntity.product.price | sum: cartEntity.quantity}}</strong></td>
+                        <td class="col-sm-1 col-md-1">
+                        <button type="button" (click)=removeByProductId(cartEntity.product.id) class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span> Remove
+                        </button></td>
+                    </tr>
+                    <tr>
+                        <td class="hidden-xs">   </td>
+                        <td class="hidden-xs">   </td>
+                        <td>   </td>
+                        <td><h5>Estimated shipping</h5></td>
+                        <td class="text-right"><h5><strong>0:-</strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td class="hidden-xs">   </td>
+                        <td class="hidden-xs">   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <td class="text-right"><h3><strong>{{ totalSum }}:-</strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td class="hidden-xs">   </td>
+                        <td class="hidden-xs">   </td>
+                        <td>   </td>
+                        <td>
 
-              <div class="quantity-selector">
-                  <button class="quantityButton" (click)=changeQuantity(cartEntity.product.id,-1)> - </button>
-                      <span  class="quantity"  name="quantity"> {{cartEntity.quantity}} </span>
-                  <button class="quantityButton" (click)=changeQuantity(cartEntity.product.id,1)> + </button>
-              </div>
+                        <a [routerLink]="['Shop']">
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            </button>
+                        </a>
+                        </td>
 
-            </div>
-
-            <div class="col3">
-                <p>{{cartEntity.product.price | sum: cartEntity.quantity}}:-</p>
-            </div>
-
-            <div class="last">
-                <p class="removeRow-icon" (click)=removeByProductId(cartEntity.product.id)>x</p>
-            </div>
-
+                        <td>
+                        <button type="button" class="btn btn-success">
+                            Checkout <span class="glyphicon glyphicon-play"></span>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
         </div>
-
-
-    <div class="legend">
-
-        <div class="left-column">
-            <h4 class="posetive-green capitalize">Free transportation</h4>
-        </div>
-
-        <div class="right-column">
-            <h4 class="capitalize">Total {{ totalSum }}:- </h4>
-        </div>
-        <br style="clear:both">
     </div>
-
-
-    <div class="next-action">
-
-      <div class="left-column">
-           <a [routerLink]="['Shop']" ><button>Continue shoping</button></a>
-      </div>
-
-      <div class="right-column">
-          <button>Checkout</button>
-      </div>
-      <br style="clear:both">
-
-    </div>
-
-</section>

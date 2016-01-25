@@ -1,5 +1,7 @@
 import {Product} from './product';
-
+/**
+* Contains all the mocdata for the pproducts
+**/
 export var PRODUCTS: Product[] = [
   {
     "id": 1,

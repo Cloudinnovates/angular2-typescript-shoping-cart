@@ -3,7 +3,7 @@
 ## How to run the application 
   
   * clone the code 
-  * go to the root of the folder and run ``` npm start ```
+  * go to the root of the folder and run ``` npm start ``` and ```npm install```
   * Go to localhost:3000 ( if not automagicaly redirected there )
   
 

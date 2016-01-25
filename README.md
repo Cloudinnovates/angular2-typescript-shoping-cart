@@ -6,6 +6,12 @@
   * go to the root of the folder and run ```npm install``` and then ``` npm start ```.
   * Go to localhost:3000 ( if not automagicaly redirected there )
 
+##Importing the code in your editor
+One thing to note here is that as soon you start the dev server with ``` npm start ``` the folder will be populated with ignored files. This is because typescript code is beeing converted into javascript code. The output folder for these files can be changed. But for this project i chosen to tell my editor to hide files ignored by git. 
+
+For atom its as simple as: 
+Settings > Packages > tree-view > check Hide Ignored VCS names
+
 
 
 ## Why Angular 2 and why TypeScript?

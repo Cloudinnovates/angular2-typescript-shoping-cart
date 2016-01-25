@@ -19,7 +19,7 @@ export class CartService {
       // if we dont have  any cart history, create a empty cart
       if(!this._storage.getItem('cart')) {
 
-          var emptyMap : { [key:string]:number; } = {};
+          let emptyMap : { [key:string]:number; } = {};
           this.setCart(emptyMap);
 
       }
@@ -28,7 +28,7 @@ export class CartService {
 
   saveListOfCartEntities(listOfCartEntries : CartEntity[]) {
       // reduce all the entities to a map
-      var cartMap = listOfCartEntries.reduce(function(map, cartEntry, i) {
+      let cartMap = listOfCartEntries.reduce(function(map, cartEntry, i) {
           map[cartEntry.product.id] = cartEntry;
           return map;
       }, {});
@@ -43,12 +43,12 @@ export class CartService {
   **/
   getAllCartEntities()  {
     // get the cart
-    var myCartMap = this.getCart();
-    var cartEntities : CartEntity[] = [];
+    let myCartMap = this.getCart();
+    let cartEntities : CartEntity[] = [];
 
     // convert the map to an array
-    for (var key in myCartMap) {
-      var value = myCartMap[key];
+    for (let key in myCartMap) {
+      let value = myCartMap[key];
       cartEntities.push(value);
     }
 
@@ -61,7 +61,7 @@ export class CartService {
   **/
   getCartEntryByProductId(productId) {
 
-    var myCartMap = this.getCart();
+    let myCartMap = this.getCart();
     console.log(myCartMap);
     return Promise.resolve(myCartMap[productId]);
 
@@ -73,13 +73,15 @@ export class CartService {
   **/
   addProductToCart(product: Product) : void{
       // product id , quantity
-      var cartMap = this.getCart();
+      let cartMap = this.getCart();
 
         // if the current key exists in the map , append value
         if(cartMap[product.id] != undefined) {
-            var cartInstance = cartMap[product.id];
+
+            let cartInstance = cartMap[product.id];
             cartInstance.quantity++;
             cartMap[product.id] = cartInstance;
+
         } else {
           // if not, set default value
           cartMap[product.id] = {
@@ -97,7 +99,7 @@ export class CartService {
   **/
   private getCart() {
 
-     var cartAsString = this._storage.getItem('cart');
+     let cartAsString = this._storage.getItem('cart');
      return JSON.parse(cartAsString);
 
   }

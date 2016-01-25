@@ -63,8 +63,9 @@ export class ShopComponent implements OnInit {
     **/
     appendItem(product: Product) {
 
+        // get the cart entry for the product
         this._cartService.getCartEntryByProductId(product.id).then(function(cartEntry:CartEntity) {
-
+          // if product quantity hasnt been exeeded
           if(cartEntry == undefined ||  (cartEntry.quantity + 1 <=  cartEntry.product.stockQuantity)) {
 
               this._cartService.addProductToCart(product);
@@ -72,7 +73,7 @@ export class ShopComponent implements OnInit {
               this._router.navigate( ['Cart'] );
 
           } else {
-
+              // TODO: change this one to a modal later on, if needed
               alert("Out of stock for the given product. You currently have " + cartEntry.quantity + " of given product in your cart, while we in stock have " + cartEntry.product.stockQuantity );
 
           }
@@ -98,7 +99,7 @@ export class ShopComponent implements OnInit {
 
           this.products = result;
           this.visibleProducts = result;
-          
+
         }.bind(this), function(err) {
             alert("something went wrong while fetching the products"); // some error message to the user would be good
         });

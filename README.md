@@ -15,7 +15,7 @@ Angular 2 is the next version of Gooles MV* framework for building webb apps. It
 Angular 2 is still in beta, but it looks very promissing i have to say. At least for me :)
 
 #### TypeScript 2
-Why TypeScript?? Why not pure js?  Mainly because Angular 2 is quite new and the tutorials out there are for just TypeScript. 
+Why TypeScript?? Why not pure js?  Mainly because Angular 2 is quite new and the documentation is at the moment written mostly in TypeScript.
 In the end , for me as a developer TypeScript provides me a typed superset of JavaScript.
 Existing JavaScript projects can be converted to TypeScript "simply" by renaming the source files from*.js to *.ts.
 

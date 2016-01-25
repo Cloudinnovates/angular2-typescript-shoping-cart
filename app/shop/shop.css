@@ -24,6 +24,8 @@
 }
 .product-price-now {
   text-align: right;
+  font-weight: 700;
+    font-size: large;
 }
 .add-to-cart-button {
   float:right;
@@ -43,10 +45,6 @@
 
 }
 
-
-.product-list-header h2 {
-    margin:0px;
-}
 .product-list-header {
     margin-bottom: 14px;
 }

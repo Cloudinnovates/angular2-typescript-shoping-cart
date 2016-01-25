@@ -7,11 +7,17 @@
   * Go to localhost:3000 ( if not automagicaly redirected there )
 
 ##Importing the code in your editor
-One thing to note here is that as soon you start the dev server with ``` npm start ``` the folder will be populated with ignored files. This is because typescript code is beeing converted into javascript code. The output folder for these files can be changed. But for this project i chosen to tell my editor to hide files ignored by git. 
+One thing to note here is that as soon you start the dev server with ``` npm start ``` the folder will be populated with ignored files. This is because typescript code is beeing converted into javascript code. The output folder for these files can be changed. But for this project i chosen to tell my editor to hide files ignored by git.
 
-For atom its as simple as: 
+For atom its as simple as:
 Settings > Packages > tree-view > check Hide Ignored VCS names
 
+
+## Running the test cases
+
+For running the test cases, we currently write two commands in the root. ( one for compiling the code, one for running the tests in the browser ) ```npm run tsc ``` and ```npm test```
+
+The testcases are inside the source folder as the angular dev team wants it. They are called the same as the source file, but with .spec appended to the end. 
 
 
 ## Why Angular 2 and why TypeScript?
@@ -27,7 +33,7 @@ Existing JavaScript projects can be converted to TypeScript "simply" by renaming
 
 The TypeScript code here get transpiled into JavaScript with the typescript tool configured as a file watcher.
 
-I had the possibility to use new features out of ES6. For example the code that filters the products on the first page can be written with one line of javascript: 
+I had the possibility to use new features out of ES6. For example the code that filters the products on the first page can be written with one line of javascript:
 
 
 ```javascrip

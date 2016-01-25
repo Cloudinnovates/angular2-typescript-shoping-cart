@@ -1,4 +1,4 @@
-## Angular 2 with TypeScript & Bootstrap 3
+# Angular 2 with TypeScript & Bootstrap 3
 
 ## How to run the application
 

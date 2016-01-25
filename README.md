@@ -1,13 +1,13 @@
 ## Angular 2 with TypeScript & Bootstrap 3
 
-## How to run the application 
-  
-  * clone the code 
-  * go to the root of the folder and run ``` npm start ``` and ```npm install```
-  * Go to localhost:3000 ( if not automagicaly redirected there )
-  
+## How to run the application
 
-  
+  * clone the code
+  * go to the root of the folder and run ```npm install``` and then ``` npm start ```.
+  * Go to localhost:3000 ( if not automagicaly redirected there )
+
+
+
 ## Why Angular 2 and why TypeScript?
 
 #### Angular 2
@@ -21,6 +21,12 @@ Existing JavaScript projects can be converted to TypeScript "simply" by renaming
 
 The TypeScript code here get transpiled into JavaScript with the typescript tool configured as a file watcher.
 
+I had the possibility to use new features out of ES6. For example the code that filters the products on the first page can be written with one line of javascript: 
 
 
-  
+```javascrip
+
+// filter out non maching products with js array.filter + string.includes
+this.visibleProducts = this.products.filter(product => product.description.toLowerCase().includes(this.filterVal.toLowerCase()));
+
+```
